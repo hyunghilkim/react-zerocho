@@ -1,9 +1,9 @@
 # 8개의 웹게임을 만들며 배우는 React
   ### 1. 구구단
-    - JSX
-    - props, state
+    - JSX 
+    - props
+    - state
     - setState
-    - ref
   ### 2. 끝말잇기
     
   ### 3. 숫자야구

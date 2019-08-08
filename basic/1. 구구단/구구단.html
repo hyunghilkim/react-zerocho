@@ -41,7 +41,10 @@
                 second: Math.ceil(Math.random() * 9)
               };
             });
+
+            //input 돔이 선택된다.
             this.input.focus();
+
             /* this.setState(prevState => {
               return {
                 value: prevState.value + 1
@@ -62,9 +65,19 @@
           this.setState({ value: e.target.value });
         };
 
+        //ref(dom에 접근하고 싶을때 리액트에서 쓸수 있는 방법) 할때 input 변수를 선언 => input 태그가 할당된다.
         input;
+
+        onRefInput = c => {
+          this.input = c;
+        };
+
         //컨텐츠
         render() {
+          //setState를 할때, state가 변하면, render() 함수가 다시 실행된다. render()를 너무 많이 하면 느려진다.
+          // render()가 자주 실행되기때문에, 메소드를 inline으로 하지 말고 render()함수 밖으로 빼는게 최작화에 좋다.
+          console.log("랜더링");
+
           return (
             <React.Fragment>
               <div>
@@ -72,9 +85,7 @@
               </div>
               <form onSubmit={this.onSubmit}>
                 <input
-                  ref={c => {
-                    this.input = c;
-                  }}
+                  ref={this.onRefInput}
                   type="number"
                   value={this.state.value}
                   onChange={this.onChange}

@@ -12,6 +12,19 @@ module.exports = {
     // 이미 다른곳에서 불러왔으면 그 파일은 넣을 필요가 없다.
     app: ["./client"]
   },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: ["@babel/plugin-proposal-class-properties"]
+        }
+      }
+    ]
+  },
+
   //출력
   output: {
     //C:\users\김현길\Desktop\local\react-zerocho\basic\lectture\dist  * __dirname : 현재폴더

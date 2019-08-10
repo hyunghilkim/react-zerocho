@@ -2,10 +2,12 @@ const React = require("react");
 const { Component } = React;
 
 class WordRelay extends Component {
-  state = {};
+  state = {
+    text: "Hello kim!"
+  };
 
   render() {
-    return <h1>Hello kim!</h1>;
+    return <h1>{this.state.text}</h1>;
   }
 }
 

@@ -30,3 +30,20 @@
 - 실제 서비스 할때는 웹팩이 필요없다. 개발 할때만 웹팩이 필요하다.
 
 ```
+
+```
+- 웹팩 관련 설치 및 설정
+
+
+
+```
+
+```
+- 바벨 설치 및 설정
+
+    npm i -D @babel/core    기본적인 바벨 설치, 최신문법 바꾸어준다.
+    npm i -D @bable/preset-env     환경에 맞게, 브라우저에 맞게 옛날문법으로 바꾸어 준다.
+    npm i -D @bable/preset-react   JSX 문법 지원
+    npm i -D babel-loader      바벨과 웹팩을 연결 해 준다.
+    npm i -D @babel/plugin-proposal-class-properties    클래식 컴포넌트 state문법 사용을 지원
+```

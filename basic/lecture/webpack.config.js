@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   name: "word-relay-setting",
@@ -18,13 +19,25 @@ module.exports = {
         test: /\.jsx?/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: {
+                  browsers: ["> 5% in KR", "last 2 chrome versions"] //한국에서 브라우저 점유율 5%이상의 브라우저는 다 지원을 한다.
+                },
+                debug: true
+              }
+            ],
+            "@babel/preset-react"
+          ],
           plugins: ["@babel/plugin-proposal-class-properties"]
         }
       }
     ]
   },
-
+  //확장 프로그램
+  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
   //출력
   output: {
     //C:\users\김현길\Desktop\local\react-zerocho\basic\lectture\dist  * __dirname : 현재폴더

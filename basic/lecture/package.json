@@ -4,7 +4,7 @@
   "description": "```\r 10년동안 제이쿼리로 웹을 잘 만들어 왔는데, 리액트를 사용하는 이유는 무엇일까?",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack"
+    "dev": "webpack-dev-server --hot"
   },
   "author": "khk",
   "license": "MIT",
@@ -18,7 +18,9 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "react-hot-loader": "^4.12.10",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
   }
 }

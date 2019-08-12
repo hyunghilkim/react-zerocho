@@ -20,6 +20,10 @@
 
 ### 8. 지뢰찾기
 
+### 관련 링크
+
+- [HTML5 폼 요소 만들기](https://blog.yena.io/studynote/2018/07/18/html-form.html)
+
 # react로 nodeBird SNS 만들기
 
 - 23시간 39분

@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  name: "word-relay-setting",
+  name: "number-basbal-dev",
   mode: "development", //실서비스 : production
   devtool: "eval", // 빠르게 한다.
   resolve: {
@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         loader: "babel-loader",
         options: {
           presets: [

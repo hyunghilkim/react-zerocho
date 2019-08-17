@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { hot } from "react-hot-loader/root";
 
-import NumberClass from "./NumberClass";
+import RenderTest from "./RenderTest";
 
-const Hot = hot(NumberClass);
+const Hot = hot(RenderTest);
 
 ReactDOM.render(<Hot />, document.querySelector("#root"));

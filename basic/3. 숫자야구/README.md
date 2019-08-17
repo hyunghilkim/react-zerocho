@@ -115,3 +115,44 @@ arr1 === arr2
 >>> false
 어 달라졌네? 리액트가 변화를 감지하여 렌더링을 수행한다.
 ```
+
+#### setState
+
+```
+- 기본적으로 setStae 메소드는 해당 컴포넌트의 재 랜더링을 발생시킨다.
+- setState 메소드는 비동기로 state를 업데이트 한다.
+- setState를 사용할때 옛날 state를 사용 하냐 아니냐에 따라 구현 방식이 달라진다.
+- setState 메서드로 입력된 함수는 자신이 호출되기 직전의 상태값을 매개변수로 받는다.
+    특이한건 옛날 state를 사용할때 prevState를 매개변수로 받아서 콜백함수로 리턴해주어야 한다.
+```
+
+[리액트를 본격적으로 하기 전 알면 좋은 6가지](https://jaeyeophan.github.io/2018/01/02/React-tips-for-beginners/)
+
+#### 화살표 함수
+
+```
+const myFunction = () => { return 반환값}
+const myFunction = () => 반환값
+
+정리 : 화살표 함수에서 {}중괄호가 있고 없고에 따라 return 삽입 , 생략여부가 결정
+```
+
+#### React dev tool : 성능 개선
+
+```
+- props는 랜더링이 자주 일어나는 단점이 있다.
+- state 나 props가 바뀌었을때 랜더링이 다시 일어난다.
+- react dev tool이 업데이트 되었다. 관련문서는 아래를 참조
+- setState만 호출하면 랜더링이 일어난다. 비효율적이다.
+- 리액트 컴포넌트 작성시 실질적인 변화가 이루어지지 않았는데도 불필요한 랜더링이 일어나 최적화에 문제가 생긴다.
+- 성능최적화를 위해 불필요한 랜더링을 억제하는 방법 두가지가 있다. 첫번째 => shouldComponentUpdate 두번째 => pureComponent
+- shouldComponentUpdate : 리액트 라이프사이클 메소드 중 하나인 shouldComponentUpdate를 호출하여 랜더링 되는 부분을 조정 할수 있다.
+- pureComponent를 사용하면 shouldComponentUpdate방법 보다 더 간편하다
+- pureComponent 단점은 state에 있는 단순한 변수들은 변화를 쉽게 감지 하지만, 배열이나 객체 같은 참조형은 감지하기 어렵다.
+- 그래서 방법은 전개연산자를 활용하여 새로운 배열을 만든다. 방법은 아래와 같다.
+- this.setState({ array : [...this.state.array , 1]}) 이런식으로 사용하면 변화를 감지하여 랜더링한다.
+```
+
+[react-dev-tool 변경부분 업데이트('19.8.15)](https://github.com/facebook/react/blob/master/packages/react-devtools/CHANGELOG.md)
+
+[react-dev-tool 새로운 버전('19.8.15) 대화형 자습서](https://react-devtools-tutorial.now.sh/)

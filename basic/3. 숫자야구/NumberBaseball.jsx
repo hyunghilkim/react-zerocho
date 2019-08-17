@@ -21,13 +21,17 @@ class NumberBaseball extends Component {
   };
 
   onSubmitForm = e => {
+    const { value, tries, answer } = this.state;
     e.preventDefault();
     //1. 정답일때
-    if (this.state.value === this.state.answer.join("")) {
-      this.setState({
-        result: "홈런!",
-        // 과거 tries 넣어주고, 새로운 요소를 넣어줘야 state.tries가 변화되었다는 것을 리액트가 감지하여 렌더링을 실시
-        tries: [...this.state.tries, { try: this.state.value, result: "홈런!" }]
+    if (value === answer.join("")) {
+      // 함수형 setState로 만들어줘야 한다.
+      this.setState(prevState => {
+        return {
+          result: "홈런!",
+          // 과거 tries 넣어주고, 새로운 요소를 넣어줘야 state.tries가 변화되었다는 것을 리액트가 감지하여 렌더링을 실시
+          tries: [...tries, { try: value, result: "홈런!" }]
+        };
       });
       //1.1 게임을 초기화 한다.
       alert("게임을 다시 시작합니다!");
@@ -39,15 +43,13 @@ class NumberBaseball extends Component {
     }
     //2. 정답이 아닐때
     else {
-      const answerArray = this.state.value.split("").map(v => parseInt(v));
+      const answerArray = value.split("").map(v => parseInt(v));
       let strike = 0;
       let ball = 0;
       //2.1  10번 이상 틀렸을때
-      if (this.state.tries.length >= 9) {
+      if (tries.length >= 9) {
         this.setState({
-          result: `10번 넘게 틀려서 실패 답은 ${this.state.answer.join(
-            ","
-          )} 였습니다!`
+          result: `10번 넘게 틀려서 실패 답은 ${answer.join(",")} 였습니다!`
         });
         //2.1.1 게임을 초기화 한다.
         alert("게임을 다시 시작합니다");
@@ -61,7 +63,7 @@ class NumberBaseball extends Component {
       else {
         for (let i = 0; i < 4; i++) {
           //2.2.1 스트라이크 카운트를 센다
-          if (answerArray[i] === this.state.answer[i]) {
+          if (answerArray[i] === answer[i]) {
             strike++;
           }
           //2.2.2 볼 카운트를 센다. * includes() 메서드는 배열이 특정 요소를 포함하고 있는지 판별한다.
@@ -94,19 +96,16 @@ class NumberBaseball extends Component {
   inputRef = createRef();
 
   render() {
+    const { result, value, tries } = this.state;
     return (
       <>
-        <h1>{this.state.result}</h1>
+        <h1>{result}</h1>
         <form onSubmit={this.onSubmitForm}>
-          <input
-            maxLength={4}
-            value={this.state.value}
-            onChange={this.onChangeInput}
-          />
+          <input maxLength={4} value={value} onChange={this.onChangeInput} />
         </form>
-        <div>시도 : {this.state.tries.length}</div>
+        <div>시도 : {tries.length}</div>
         <ul>
-          {this.state.tries.map((v, i) => {
+          {tries.map((v, i) => {
             return <Try key={i} tryInfo={v} />;
           })}
         </ul>

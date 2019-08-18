@@ -203,8 +203,73 @@ const myFunction = () => 반환값
 방법은 아래와 같다.
 
 - this.setState({ array : [...this.state.array , 1]}) 이런식으로 사용하면 변화를 감지하여 랜더링한다.
+
+- state안에는 단순한 자료구조가 좋다. 배열안에 객체 그안에 배열,
+이런 복잡한 자료구조는 변화감지가 안될 수 있다.
+
+- pureComponent와 shouldComponentUpdate 중에 어떤 방법을 사용할지는
+상황에 따라 다를수 있다.
+
+- hooks 에서는 useMemo(메모이제이션)를 사용한다.
+
+- 컴포넌트를 memo()로 감싸주면 된다.
+
+- 리액트 성능 최적화에 memo와 pureComponent를 사용한다.
 ```
 
 [react-dev-tool 변경부분 업데이트('19.8.15)](https://github.com/facebook/react/blob/master/packages/react-devtools/CHANGELOG.md)
 
 [react-dev-tool 새로운 버전('19.8.15) 대화형 자습서](https://react-devtools-tutorial.now.sh/)
+
+#### ref 속성값으로 자식 요소에 접근하기
+
+```
+- 리액트로 작업하다 보면 돔 요소에 직접 접근해야 할때가 있다.
+예를 들어, 돔요소에 포커스를 주거나
+돔요소의 크기나 스크롤 위치를 알고 싶은 경우가 있다.
+
+- HOOKS에서는 useRef를 만들어서 사용함.current가 더 들어간다.
+
+- 클래스 컴포넌트와 hooks에서 사용법이 다른데 클래스 컴포넌트에서
+hooks처럼 사용하는 용법이 존재한다. createRef 함수를 사용하면 된다.
+hooks와 용법(useRef)이 비슷하여, 외우기 편하다.
+
+// createRef 함수를 호출하여 할당한다.
+1. inputRef = createRef();
+
+// render() 안에 이벤트 핸들러를 등록한다.
+2. <input ref={this.inputRef}>
+
+// ref 객체의 current 속성을 이용하면 자식 요소에 접근 할 수 있다.
+3. this.inputRef.current.focus();
+
+* 예전 방식은 함수를 만들기에 console.log도 할수 있고, 자유도가 높다.
+```
+
+#### 일급함수, 일급객체
+
+- 일급객체, 일급함수를 만들면 자유도가 높아지고, 미세한 조정을 할수 있다.
+- 함수안에 다른함수를 넣는다는건 최신언어를 제외하고 흔한 일이 아니다.
+
+#### props와 state 연결하기
+
+```
+- render() 함수안에 setState를 넣으면 안된다. 무한반복된다.
+
+- setState 함수를 호출하면 render 함수를 호출한다.
+
+- 자식 컴포넌트에서 부모로 받은 props를 state에 넣을수 있다.
+
+- props는 부모가 바꾸어야지 자식은 바꿀수 없다.
+
+- 하지만 실무를 하다보면 자식에서 props를 바꿀 상황이 생긴다.
+이때, props를 state에 넣는 방법이 있다.
+
+- props는 직접 바꾸지 말고 state를 만들어서 바꾼다.
+props를 바꾸면 안되는 이유는 부모 컴포넌트에 영향을 주기 때문이다.
+부모가 갖고있는 데이터가 의도치 않게 바뀌어서 문제가 된다.
+
+- 클래스 컴포넌트와 hooks는 당연히 구현 방법 다르다.
+- 클래스 컴포넌트 작성시 constructor를 안 만들어도 되지만,
+다른동작을 넣을 수 있어 미세조정의 장점이 있다.
+```

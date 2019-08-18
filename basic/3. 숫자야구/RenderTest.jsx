@@ -5,7 +5,12 @@ highlightUpdates();
 
 class Test extends PureComponent {
   state = {
-    counter: 0
+    counter: 0,
+    string: "hello",
+    number: 1,
+    boolean: true,
+    object: {},
+    array: []
   };
 
   /* shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -18,7 +23,7 @@ class Test extends PureComponent {
   } */
 
   onClick = () => {
-    this.setState({});
+    this.setState({ array: [] });
   };
 
   render() {

@@ -1,5 +1,5 @@
 {
-  "name": "lecture",
+  "name": "number-baseball",
   "version": "1.0.0",
   "description": "```\r 10년동안 제이쿼리로 웹을 잘 만들어 왔는데, 리액트를 사용하는 이유는 무엇일까?",
   "main": "index.js",
@@ -9,12 +9,13 @@
   "author": "khk",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-highlight-updates": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
